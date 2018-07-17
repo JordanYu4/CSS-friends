@@ -1,0 +1,14 @@
+<!-- "show post" -->
+
+Title: <%=@post.title%>
+<br>
+URL: <%=@post.url%>
+<br>
+Content: <%=@post.content%>
+<br>
+Author: <%=@post.user.username%>
+
+<br>
+<br>
+
+<a href="<%=sub_url(@post.sub)%>">Return to Sub</a>

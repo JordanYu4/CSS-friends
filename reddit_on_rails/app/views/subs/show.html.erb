@@ -1,0 +1,20 @@
+<!-- "show sub" -->
+
+<h2>Welcome to: <%=@sub.title%></h2>
+<br>
+Description: <%=@sub.description%>
+<br>
+Mod: <%=@sub.mod.username%>
+
+<br>
+
+<h3>Posts</h3>
+<ul>
+  <% @sub.posts.each do |post| %>
+    <li><a href="<%=sub_post_url(post)%>"><%=post.title%></a></li>
+  <% end %>
+</ul>
+
+<br>
+
+<a href="<%=subs_url%>">Return to Subs index</a>
