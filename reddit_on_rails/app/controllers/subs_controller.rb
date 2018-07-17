@@ -45,6 +45,12 @@ class SubsController < ApplicationController
     end
   end
 
+  def destroy
+    @sub = Sub.find(params[:id])
+    @sub.destroy
+    redirect_to subs_url
+  end
+
   private
 
   def sub_params

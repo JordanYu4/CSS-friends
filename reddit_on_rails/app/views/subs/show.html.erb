@@ -3,15 +3,26 @@
 <h2>Welcome to: <%=@sub.title%></h2>
 <br>
 Description: <%=@sub.description%>
-<br>
+<br><br>
 Mod: <%=@sub.mod.username%>
 
 <br>
 
 <h3>Posts</h3>
+
+<a href="<%= new_sub_post_url(@sub) %>">Create new post</a>
+
 <ul>
   <% @sub.posts.each do |post| %>
     <li><a href="<%=sub_post_url(post)%>"><%=post.title%></a></li>
+
+    <form action="<%= sub_post_url(@sub, post) %>" method="post">
+      <input type="hidden" name="authenticity_token"
+      value="<%= form_authenticity_token %>">
+      <input type="hidden" name="_method" value="delete">
+      <input type="submit" value="Remove post">
+    </form>
+
   <% end %>
 </ul>
 

@@ -2,6 +2,8 @@
 
 <h2>Subs Index</h2>
 
+<a href="<%= new_sub_url %>">Create a new sub</a>
+
 <ul>
   <% @subs.each do |sub| %>
     <li><a href="<%=sub_url(sub)%>"><%=sub.title%></a></li>

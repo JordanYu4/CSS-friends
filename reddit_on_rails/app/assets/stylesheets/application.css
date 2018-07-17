@@ -13,3 +13,42 @@
  *= require_tree .
  *= require_self
  */
+
+* {
+  font-family: sans-serif;
+}
+
+header {
+  background: #2196f3;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  justify-content: space-between;
+  margin: auto;
+  color: #000;
+  margin-bottom: 15px;
+}
+
+body {
+  width: 75%;
+  margin: auto;
+  padding: 10px;
+  color: #000;
+  border: 1px solid gray;
+}
+
+footer {
+  height: 400px;
+  background-image: url(shakshuka.gif);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background
+  border: 1px solid gray;
+  margin-top: 40px;
+}
+
+h2, form {
+  text-align: center;
+}
+
+ul
