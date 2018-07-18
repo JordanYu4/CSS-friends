@@ -3246,3 +3246,125 @@ Processing by SessionsController#new as HTML
 Completed 200 OK in 27ms (Views: 24.6ms | ActiveRecord: 0.5ms)
 
 
+Started GET "/session/new" for 127.0.0.1 at 2018-07-17 16:11:16 -0700
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (0.7ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+Completed 200 OK in 109ms (Views: 106.9ms | ActiveRecord: 0.5ms)
+
+
+  [1m[35m (21.9ms)[0m  [1m[34mSELECT pg_try_advisory_lock(47923286702875395)[0m
+  [1m[35m (31.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreatePostSubs (20180717232314)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (293.4ms)[0m  [1m[35mCREATE TABLE "post_subs" ("id" bigserial primary key, "post_id" integer NOT NULL, "sub_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180717232314"]]
+  [1m[35m (10.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (14.8ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(47923286702875395)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_try_advisory_lock(47923286702875395)[0m
+  [1m[35m (25.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to KillSubIdFromPosts (20180718000055)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (111.1ms)[0m  [1m[35mALTER TABLE "posts" DROP "sub_id"[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180718000055"]]
+  [1m[35m (17.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(47923286702875395)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/session" for 127.0.0.1 at 2018-07-17 17:14:22 -0700
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"u1gjxjYFVWAA9QQ1yPsQZ5OvXn50oB2SZ2LIbXigPkGlSvIpSL9p8DKjESLgUKX43EO425YBGJWV8ZMt9oLn7Q==", "user"=>{"username"=>"user", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "user"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND ("users"."id" != $2) LIMIT $3[0m  [["username", "user"], ["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND ("users"."id" != $2) LIMIT $3[0m  [["session_token", "oEgqgtod-x7qTGQm1pBETA"], ["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "oEgqgtod-x7qTGQm1pBETA"], ["updated_at", "2018-07-18 00:14:22.447274"], ["id", 1]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/subs
+Completed 302 Found in 131ms (ActiveRecord: 10.6ms)
+
+
+Started GET "/subs" for 127.0.0.1 at 2018-07-17 17:14:22 -0700
+Processing by SubsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "oEgqgtod-x7qTGQm1pBETA"], ["LIMIT", 1]]
+  Rendering subs/index.html.erb within layouts/application
+  [1m[36mSub Load (0.5ms)[0m  [1m[34mSELECT "subs".* FROM "subs"[0m
+  Rendered subs/index.html.erb within layouts/application (15.1ms)
+Completed 200 OK in 83ms (Views: 64.1ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/subs/new" for 127.0.0.1 at 2018-07-17 17:14:24 -0700
+Processing by SubsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "oEgqgtod-x7qTGQm1pBETA"], ["LIMIT", 1]]
+  Rendering subs/new.html.erb within layouts/application
+  Rendered subs/new.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 77ms (Views: 26.3ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/subs" for 127.0.0.1 at 2018-07-17 17:14:39 -0700
+Processing by SubsController#create as HTML
+  Parameters: {"authenticity_token"=>"3LxhpsCe/QflHGZTfMXr3rwGiSS7DXTMcNAGlI6LoJbCrrBJviTBl9dKc0RUbl5B8+pvgVmsccuCQ13UAKl5Og==", "sub"=>{"title"=>"I would like an egg tart", "description"=>"Please"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "oEgqgtod-x7qTGQm1pBETA"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "subs" ("title", "description", "mod_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "I would like an egg tart"], ["description", "Please"], ["mod_id", 1], ["created_at", "2018-07-18 00:14:39.857926"], ["updated_at", "2018-07-18 00:14:39.857926"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/subs/3
+Completed 302 Found in 16ms (ActiveRecord: 2.5ms)
+
+
+Started GET "/subs/3" for 127.0.0.1 at 2018-07-17 17:14:39 -0700
+Processing by SubsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "oEgqgtod-x7qTGQm1pBETA"], ["LIMIT", 1]]
+  [1m[36mSub Load (0.3ms)[0m  [1m[34mSELECT  "subs".* FROM "subs" WHERE "subs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering subs/show.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered subs/show.html.erb within layouts/application (28.5ms)
+Completed 500 Internal Server Error in 73ms (ActiveRecord: 1.0ms)
+
+
+
+NameError - uninitialized constant Sub::Postsub:
+  app/views/subs/show.html.erb:16:in `_app_views_subs_show_html_erb__4298356889357653748_70214441343240'
+
+Started POST "/__better_errors/4c29a840f842fee0/variables" for 127.0.0.1 at 2018-07-17 17:14:40 -0700
+Started POST "/subs" for 127.0.0.1 at 2018-07-17 17:19:55 -0700
+Processing by SubsController#create as HTML
+  Parameters: {"authenticity_token"=>"22j5ZSAI+I2hv1JwKKGitH/xpGGMycq1DKcPRWjYRf/FeiiKXrLEHZPpR2cAChcrMB1CxG5oz7L+NFQF5vqcUw==", "sub"=>{"title"=>"I would like an egg tart", "description"=>"Please"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "oEgqgtod-x7qTGQm1pBETA"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "subs" ("title", "description", "mod_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "I would like an egg tart"], ["description", "Please"], ["mod_id", 1], ["created_at", "2018-07-18 00:19:56.026892"], ["updated_at", "2018-07-18 00:19:56.026892"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/subs/4
+Completed 302 Found in 37ms (ActiveRecord: 12.2ms)
+
+
+Started GET "/subs/4" for 127.0.0.1 at 2018-07-17 17:19:56 -0700
+Processing by SubsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "oEgqgtod-x7qTGQm1pBETA"], ["LIMIT", 1]]
+  [1m[36mSub Load (0.4ms)[0m  [1m[34mSELECT  "subs".* FROM "subs" WHERE "subs"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering subs/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered subs/show.html.erb within layouts/application (8.0ms)
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 1.0ms)
+
+
+
+NameError - uninitialized constant Sub::Postsub:
+  app/views/subs/show.html.erb:16:in `_app_views_subs_show_html_erb__4298356889357653748_70214440455860'
+
+Started POST "/__better_errors/ae6ba87b3ba21ad8/variables" for 127.0.0.1 at 2018-07-17 17:19:56 -0700
